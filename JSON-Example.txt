@@ -1,0 +1,34 @@
+{
+  "Rules": [
+    {
+      "Condition": {
+        "Expression": {
+          "And": [
+            { "Equals": [ "@CurrentAppContext.appName", "<App Name>" ] },
+            { "Contains": [ "@CurrentUserContext.teamNames", "<Team Name>" ] },
+            { "Equals": [ "@CurrentFormContext.formName", "<Form Name>" ] }
+          ]
+        },
+        "Steps": [
+          {
+            "Actions": [
+              {
+                "ActionName": "@FormActions.SetFormDisabled",
+                "ActionType": "Command",
+                "Parameters": [ true ]
+              },
+              {
+                "ActionName": "@FormActions.SetFormFieldsDisabled",
+                "ActionType": "Command",
+                "Parameters": [
+                  [ "<Field Name>", "<Field Name>" ],
+                  false
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
